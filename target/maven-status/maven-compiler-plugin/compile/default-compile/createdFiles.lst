@@ -1,0 +1,4 @@
+com\devops\studentapi\controller\StudentController.class
+com\devops\studentapi\model\Student.class
+com\devops\studentapi\StudentApiApplication.class
+com\devops\studentapi\service\StudentService.class
