@@ -1,9 +1,4 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// Jenkinsfile — Windows Compatible Declarative Pipeline
-// ─────────────────────────────────────────────────────────────────────────────
-
 pipeline {
-
     agent any
 
     environment {
@@ -39,7 +34,7 @@ pipeline {
             post {
                 always {
                     junit testResults: 'target/surefire-reports/*.xml',
-                        allowEmptyResults: true
+                          allowEmptyResults: true
                 }
             }
         }
@@ -68,7 +63,7 @@ pipeline {
         stage('Docker Push') {
             steps {
                 echo '=== Pushing image to Docker Hub ==='
-                bat "echo %DOCKER_CREDS_PSW% | docker login -u %DOCKER_CREDS_USR% --password-stdin"
+                bat "docker login -u %DOCKER_CREDS_USR% -p %DOCKER_CREDS_PSW%"
                 bat "docker push ${FULL_IMAGE}"
                 bat "docker push ${DOCKER_USERNAME}/${IMAGE_NAME}:latest"
             }
