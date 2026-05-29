@@ -1,12 +1,13 @@
 package com.devops.studentapi.service;
 
-import com.devops.studentapi.model.Student;
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
+
+import org.springframework.stereotype.Service;
+
+import com.devops.studentapi.model.Student;
 
 // @Service marks this class as a Spring-managed service bean
 // It holds the business logic and in-memory data store
@@ -25,6 +26,7 @@ public class StudentService {
         students.add(new Student(counter.getAndIncrement(), "Arjun Sharma",   "arjun@example.com",  2, "CSE"));
         students.add(new Student(counter.getAndIncrement(), "Priya Patel",    "priya@example.com",  3, "ECE"));
         students.add(new Student(counter.getAndIncrement(), "Rahul Singh",    "rahul@example.com",  1, "ME"));
+        students.add(new Student(counter.getAndIncrement(), "Rajat", "simran@lpu.in", 3, "CSE"));
     }
 
     // GET all students
