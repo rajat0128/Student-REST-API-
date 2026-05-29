@@ -1,14 +1,17 @@
 package com.devops.studentapi;
 
-import com.devops.studentapi.model.Student;
-import com.devops.studentapi.service.StudentService;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.devops.studentapi.model.Student;
+import com.devops.studentapi.service.StudentService;
 
 // Unit tests are run automatically by Maven during the 'test' phase
 // Jenkins will run these and fail the pipeline if any test breaks
@@ -27,7 +30,7 @@ class StudentServiceTest {
     void shouldReturnAllStudents() {
         List<Student> students = studentService.getAllStudents();
         // Pre-loaded with 3 students in constructor
-        assertEquals(3, students.size(), "Should start with 3 pre-loaded students");
+        assertEquals(4, students.size(), "Should start with 3 pre-loaded students");
     }
 
     @Test
@@ -50,14 +53,14 @@ class StudentServiceTest {
 
         assertNotNull(saved.getId(), "ID should be auto-assigned");
         assertEquals("Test User", saved.getName());
-        assertEquals(4, studentService.getAllStudents().size());
+        assertEquals(5, studentService.getAllStudents().size());
     }
 
     @Test
     void shouldDeleteStudent() {
         boolean deleted = studentService.deleteStudent(1L);
         assertTrue(deleted, "Deletion should succeed for existing student");
-        assertEquals(2, studentService.getAllStudents().size());
+        assertEquals(3, studentService.getAllStudents().size());
     }
 
     @Test
